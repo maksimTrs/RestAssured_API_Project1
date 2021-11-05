@@ -4,22 +4,19 @@ package apimethods.delete;
 import apimethods.get.TestPostmanEchoGet1;
 import apimethods.post.TestPostmanPetsPost1;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
-
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
@@ -39,17 +36,26 @@ public class TestPostmanPetsDelete1 {
 
     @Test
     public void deleteCurrentPet() {
-        given()
+      Response response = given()
                 .header("Content-type", "application/json")
                 .when()
                 .delete("/769")
                 .then()
-               // .contentType(ContentType.JSON)
+                .log().all()
+                .extract()
+                .response();
+             /*   .then()
+                // .contentType(ContentType.JSON)
                 .assertThat()
                 .statusCode(200)
                 .and()
-                .body("message", notNullValue())
-                .log().all();
+                .body("message", notNullValue())*/
+
+
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(response.statusCode()).isEqualTo(200);
+        assertThat(response.jsonPath().getString("message"), notNullValue());
+
 
         logger.info("deleteCurrentPet()  test was passed");
     }
