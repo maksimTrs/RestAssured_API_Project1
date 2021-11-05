@@ -22,6 +22,7 @@ import static org.hamcrest.Matchers.*;
 @RunWith(SerenityRunner.class)
 public class TestPostmanPetsDelete1 {
     private static Logger logger = LogManager.getLogger(TestPostmanEchoGet1.class);
+    private TestPostmanPetsPost1 startMethod;
 
     @BeforeClass
     public static void setUp() {
@@ -30,7 +31,7 @@ public class TestPostmanPetsDelete1 {
 
     @Before
     public void createPet() {
-        TestPostmanPetsPost1 startMethod = new TestPostmanPetsPost1();
+        startMethod = new TestPostmanPetsPost1();
         startMethod.postRequest();
     }
 
@@ -54,8 +55,8 @@ public class TestPostmanPetsDelete1 {
 
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(response.statusCode()).isEqualTo(200);
-        assertThat(response.jsonPath().getString("message"), notNullValue());
-
+       // assertThat(response.jsonPath().getString("message"), notNullValue());
+        softAssertions.assertThat(response.jsonPath().getString("message")).isNotNull();
 
         logger.info("deleteCurrentPet()  test was passed");
     }
