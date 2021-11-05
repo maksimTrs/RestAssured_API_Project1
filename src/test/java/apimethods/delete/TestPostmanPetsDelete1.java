@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.*;
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
 public class TestPostmanPetsDelete1 {
-    private static Logger logger = LogManager.getLogger(TestPostmanEchoGet1.class);
+    private static Logger logger = LogManager.getLogger(TestPostmanPetsDelete1.class);
     private TestPostmanPetsPost1 startMethod;
 
     @BeforeClass
