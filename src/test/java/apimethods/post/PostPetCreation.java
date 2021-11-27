@@ -1,16 +1,29 @@
 package apimethods.post;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PostPetCreation {
 
     private int id;
     private Map<String, String> category = new HashMap<String, String>();
     private String name;
-    private String[] photoUrls = new  String[3];
+    private Object photoUrls;
+    // private List<String> photoUrls = new ArrayList<>();
     private Object tags;
     private String status;
+
+    @Override
+    public String toString() {
+        return "PostPetCreation{" +
+                "id=" + id +
+                ", category=" + category +
+                ", name='" + name + '\'' +
+                ", photoUrls=" + photoUrls +
+                ", tags=" + tags +
+                ", status='" + status + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -36,11 +49,11 @@ public class PostPetCreation {
         this.name = name;
     }
 
-    public String[] getPhotoUrls() {
+    public Object getPhotoUrls() {
         return photoUrls;
     }
 
-    public void setPhotoUrls(String[] photoUrls) {
+    public void setPhotoUrls(Object photoUrls) {
         this.photoUrls = photoUrls;
     }
 
@@ -58,17 +71,5 @@ public class PostPetCreation {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "PostPetCreation{" +
-                "id=" + id +
-                ", category=" + category +
-                ", name='" + name + '\'' +
-                ", photoUrls=" + Arrays.toString(photoUrls) +
-                ", tags=" + tags +
-                ", status='" + status + '\'' +
-                '}';
     }
 }

@@ -128,10 +128,10 @@ public class TestPostmanPetsPost1 {
         System.out.println(aa);
 
         String[] aaa = {aa};
-        System.out.println(aaa.length+ "!!!!!!!!");
+        System.out.println(aaa.length + "!!!!!!!!");
 
-       Assertions.assertEquals(postPetCreations.getName(), "Tia2");
-       Assertions.assertEquals(aaa.length, 1);
+        Assertions.assertEquals(postPetCreations.getName(), "Tia2");
+        Assertions.assertEquals(aaa.length, 1);
 
         logger.info("postRequestParsingResponse() test was passed !!! ");
     }

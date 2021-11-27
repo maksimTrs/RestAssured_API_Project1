@@ -1,7 +1,6 @@
 package apimethods.delete;
 
 
-import apimethods.get.TestPostmanEchoGet1;
 import apimethods.post.TestPostmanPetsPost1;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -15,8 +14,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
@@ -37,7 +34,7 @@ public class TestPostmanPetsDelete1 {
 
     @Test
     public void deleteCurrentPet() {
-      Response response = given()
+        Response response = given()
                 .header("Content-type", "application/json")
                 .when()
                 .delete("/769")
@@ -55,7 +52,7 @@ public class TestPostmanPetsDelete1 {
 
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(response.statusCode()).isEqualTo(200);
-       // assertThat(response.jsonPath().getString("message"), notNullValue());
+        // assertThat(response.jsonPath().getString("message"), notNullValue());
         softAssertions.assertThat(response.jsonPath().getString("message")).isNotNull();
 
         logger.info("deleteCurrentPet()  test was passed");
